@@ -266,11 +266,11 @@ class App extends Component {
       if (i <= tab) classes += " step-primary";
       newList.push(
         <li key={uniqid()} className={classes}>
-          {tabs[i]}
+          <span className="hidden sm:inline">{tabs[i]}</span>
         </li>
       );
     }
-    return <ul className="steps grid-cols-[minmax(150px,_1fr)]">{newList}</ul>;
+    return <ul className="steps overflow-x-auto">{newList}</ul>;
   }
 
   mainContent() {
@@ -320,21 +320,11 @@ class App extends Component {
   render() {
     return (
       <div className="flex flex-col items-center py-8">
-        <h1 className="text-7xl font-bold mb-12">CV Application</h1>
+        <h1 className="text-7xl text-center font-bold mb-12">ATS CV Maker</h1>
         {this.steps()}
         {this.mainContent()}
-        <div className="mt-4 w-full justify-between px-20 flex">
-          {this.state.tab !== 4 ? (
-            <button
-              className="btn btn-secondary self-start"
-              onClick={this.setExample}
-            >
-              Set Example
-            </button>
-          ) : (
-            ""
-          )}
-          <div className="flex gap-2">
+        <div className="mt-4 w-11/12 gap-2 sm:w-full justify-between sm:px-20 flex flex-col-reverse sm:flex-row-reverse">
+          <div className="flex flex-col sm:flex-row gap-2">
             <button className="btn btn-ghost" onClick={this.back}>
               Back
             </button>
@@ -353,6 +343,14 @@ class App extends Component {
               />
             )}
           </div>
+          {this.state.tab !== 4 ? (
+            <button
+              className="btn btn-secondary sm:self-start"
+              onClick={this.setExample}
+            >
+              Set Example
+            </button>
+          ) : null}
         </div>
       </div>
     );

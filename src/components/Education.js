@@ -114,7 +114,7 @@ class AddSection extends Component {
           {this.deleteButton(this.props.isDeletable)}
         </div>
         <fieldset
-          className="grid grid-cols-2 gap-x-16"
+          className="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr)) gap-x-16"
           disabled={this.props.isDisabled}
         >
           <Input
